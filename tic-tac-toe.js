@@ -1,6 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let squares = document.querySelectorAll("div").className = "board";
-    squares.forEach(function (square) {
+
+    let squares = document.querySelectorAll("#board div");
+    let gameState = [];
+    let currentPlayer = "X";
+
+    squares.forEach(function (square, index) {
+
         square.classList.add("square");
+
+        square.addEventListener("click", function () {
+
+            if (square.textContent === "") {
+
+                square.textContent = currentPlayer;
+                square.classList.add(currentPlayer);
+
+                gameState[index] = currentPlayer;
+
+                if (currentPlayer === "X") {
+                    currentPlayer = "O";
+                } else {
+                    currentPlayer = "X";
+                }
+            }
+        });
+
     });
+
 });
