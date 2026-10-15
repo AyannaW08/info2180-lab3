@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let msg = status.textContent;
     let gameState = [];
     let currentPlayer = "X";
+    let over = false;
 
     squares.forEach(function (square, index) {
 
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         square.addEventListener("click", function () {
 
-            if (square.textContent !== "") {
+            if (square.textContent !== "" || over) {
                 return;
             }
 
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             "Congratulations! " + currentPlayer + " is the Winner!";
 
                         status.classList.add("you-won");
+                        over = true;
                     }
 
                 if (currentPlayer === "X") {
@@ -57,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.addEventListener("click", function () {
             gameState = [];
             currentPlayer = "X";
+            over = false;
             squares.forEach(function (square) {
                 square.textContent = "";    
                 square.classList.remove("X", "O", "hover");
