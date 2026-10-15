@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         square.addEventListener("click", function () {
 
-            if (square.textContent === "") {
+            if (square.textContent !== "") {
+                return;
+            }
 
                 square.textContent = currentPlayer;
                 square.classList.add(currentPlayer);
@@ -38,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         (gameState[3] === currentPlayer && gameState[4] === currentPlayer && gameState[5] === currentPlayer) ||
                         (gameState[6] === currentPlayer && gameState[7] === currentPlayer && gameState[8] === currentPlayer) 
                     ) {
-                       let status = document.getElementById("status");
 
                         status.textContent =
                             "Congratulations! " + currentPlayer + " is the Winner!";
@@ -51,13 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     currentPlayer = "X";
                 }
-            }
         });
     });    
         btn.addEventListener("click", function () {
             gameState = [];
             currentPlayer = "X";
-            over = false;
             squares.forEach(function (square) {
                 square.textContent = "";    
                 square.classList.remove("X", "O", "hover");
