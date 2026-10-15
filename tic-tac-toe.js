@@ -25,6 +25,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 gameState[index] = currentPlayer;
 
+                 if (
+                        (gameState[0] === currentPlayer && gameState[1] === currentPlayer && gameState[2] === currentPlayer) ||
+                        (gameState[0] === currentPlayer && gameState[3] === currentPlayer && gameState[6] === currentPlayer) ||
+                        (gameState[0] === currentPlayer && gameState[4] === currentPlayer && gameState[8] === currentPlayer) ||
+                        (gameState[1] === currentPlayer && gameState[4] === currentPlayer && gameState[7] === currentPlayer) ||
+                        (gameState[2] === currentPlayer && gameState[5] === currentPlayer && gameState[8] === currentPlayer) ||
+                        (gameState[2] === currentPlayer && gameState[4] === currentPlayer && gameState[6] === currentPlayer) ||
+                        (gameState[3] === currentPlayer && gameState[4] === currentPlayer && gameState[5] === currentPlayer) ||
+                        (gameState[6] === currentPlayer && gameState[7] === currentPlayer && gameState[8] === currentPlayer) 
+                    ) {
+                       let status = document.getElementById("status");
+
+                        status.textContent =
+                            "Congratulations! " + currentPlayer + " is the Winner!";
+
+                        status.classList.add("you-won");
+                    }
+
                 if (currentPlayer === "X") {
                     currentPlayer = "O";
                 } else {
